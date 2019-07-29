@@ -173,6 +173,29 @@ class Mahasiswa extends CI_Controller
                 break;
         }
     }
+
+    // Ikhsan
+    function cetakkta()
+    {
+        $uri = $this->uri->segment(3);
+        $dt['title'] =  "Cetak KTA";
+        $dt['url'] = base_url() . "mahasiswa/cetakkta/print";
+        switch ($uri) {
+            case "print": {
+                    $data['nmjurusan'] = $this->core_model->getarray_jurusan();
+                    $data['nmprogdi'] = $this->core_model->getarray_progdi();
+                    $this->load->view('printkta', $data);
+                };
+                break; ###end loaddata            
+
+            default:
+                $this->load->view('cetakkta', $dt);
+                break;
+        }
+    }
+    // .Ikhsan
+
+    // Bagas
     function ijazah()
     {
         $uri = $this->uri->segment(3);
@@ -191,6 +214,8 @@ class Mahasiswa extends CI_Controller
                 break;
         }
     }
+    // .Bagas
+
     function kelulusan($view = 'form')
     {
         $this->load->model('master/progdi_model');
