@@ -195,6 +195,27 @@ class Mahasiswa extends CI_Controller
     }
     // .Ikhsan
 
+    // Bagas
+    function ijazah()
+    {
+        $uri = $this->uri->segment(3);
+        $dt['title'] =  "Cetak Ijazah";
+        $dt['url'] = base_url() . "mahasiswa/ijazah/print";
+        switch ($uri) {
+            case "print": {
+                    $data['nmjurusan'] = $this->core_model->getarray_jurusan();
+                    $data['nmprogdi'] = $this->core_model->getarray_progdi();
+                    $this->load->view('printijazah', $data);
+                };
+                break; ###end loaddata            
+
+            default:
+                $this->load->view('ijazah', $dt);
+                break;
+        }
+    }
+    // .Bagas
+
     function kelulusan($view = 'form')
     {
         $this->load->model('master/progdi_model');
